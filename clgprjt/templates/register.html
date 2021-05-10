@@ -1,0 +1,68 @@
+{% load static%}
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'fontawesome/css/all.min.css'%}">
+        <!--<script src="https://kit.fontawesome.com/a076d05399.js"></script>-->
+    </head>
+    <style>
+        body{
+            background: gray;
+        }
+        .login-form{
+            background: #fff;
+            width: 450px;
+            border-radius: 10px;
+            margin: 0 auto;
+            display: table;
+            box-sizing: border-box;
+            padding: 15px 30px 30px;
+           
+            border: 2px solid rgb(27, 160, 212);
+        }
+        input{
+            border-radius: 6px;
+            color: seagreen;
+            border-color: rgb(109, 20, 101) ;
+            padding: 6px 24px;
+        }    
+        button{
+            background-color: white;
+            padding: 10px 30px;
+            border-radius: 16px;
+            border-color: blue;
+        }
+    </style>
+
+    <body>
+        <br>
+        <br><br>
+        <center>
+            <div class="login-form">
+        <form action="register" method="POST">
+            {% csrf_token %}
+            <i class="fa fa-user-circle" style="font-size: 48px; color:blue;"></i><br><br>
+             
+            <label>username</label><br><input type="text" name="username"><br><br>
+            
+            <label>email</label><br><input type="email" name="email"><br><br>
+            <label>password</label><br><input type="password" name="password1"><br><br>
+            <label>confirm password</label><br><input type="password" name="password2"><br><br>
+
+
+
+
+            
+            
+            <button>sign up</button>
+
+        </form>
+        <div>
+            {% for message in messages%}
+
+              <h3>{{ message }}</h3>
+            {% endfor %}
+        </div>
+        </center>
+    </div>
+    </body>
+</html>

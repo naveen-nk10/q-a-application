@@ -1,0 +1,117 @@
+{% load static%}
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'fontawesome/css/all.min.css'%}">
+        <!--<script src="https://kit.fontawesome.com/a076d05399.js"></script>-->
+    </head>
+    <style>
+        input[type=button]{
+            background-color: green;
+            padding: 10px 30px;
+        }
+        button{
+            background-color: white;
+            padding: 10px 30px;
+            border-radius: 16px;
+            border-color: blue;
+        }
+        a{
+            color: red;
+            background-color: transparent;
+            
+        }
+        body{
+            background: gray;
+        }
+        .login-form{
+            background: #fff;
+            width: 450px;
+            border-radius: 10px;
+            margin: 0 auto;
+            display: table;
+            box-sizing: border-box;
+            padding: 15px 30px 30px;
+           
+            border: 2px solid rgb(27, 160, 212);
+        }
+        .login-grp .input-icon{
+            font-size: 15px;
+            display: -moz-box;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            align-items: center;
+            position: absolute;
+            border-radius: 25px;
+            height: 100%;
+            
+        }
+        .text-box{
+            width: 100%;
+            overflow: hidden;
+            font-size: 5px;
+            padding: 8px 0;
+            margin: 8px 0;
+            border-radius: 6px;
+           
+
+        }
+        .input-field{
+            border-radius: 6px;
+            color:rgb(27, 30, 214) ;
+            border-color: rgb(109, 20, 101) ;
+            padding: 6px 24px;
+        }
+        :-ms-input-placeholder
+        {
+            color: hotpink;
+        }
+        ::placeholder{
+            color: hotpink;
+        }
+        .message{
+            color: red;
+        }
+    </style>
+    <body >
+        <br>
+        <br>
+        <br>
+        <br>
+        <center>
+        <div class="login-form">
+        <form action="login" method="POST">
+            {% csrf_token %}
+            <div class="login-box">
+             <i class="fa fa-user-circle" style="font-size: 48px; color:blue;"></i><br><br>
+             
+             <label>username</label>
+             <input type="text" name="name" class="input-field" placeholder=" username or emai-id"><br><br>
+           
+              
+            
+             <label>password</label>
+             <input type="password" name="password" class="input-field " placeholder=" password"><br><br>
+           
+            forgot <a href="password" >password?</a><br><br>
+            
+            <button type="submit">login</button><br>
+            <div class="message">
+                {% for message in messages%}
+    
+                  {{ message }}
+                {% endfor %}
+            </div>
+            <br><br>
+            don't have an account? <a style="color: green;" href="register">sign up</a>
+            
+        </div>
+        </form>
+        
+    </div>
+       
+        </center>
+
+    </body>
+</html>

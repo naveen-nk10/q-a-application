@@ -1,0 +1,99 @@
+<html>
+    <head>
+        <style>
+            #hii input,
+            .sty{
+                    display: inline-block; 
+                    
+                   
+                    }
+            #na{
+                display: inline-block;
+                text-align: right;
+                margin-left: 400px;
+                
+            }
+            #na,.button{
+                width: 10%;
+            }
+            .footer{
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                height: 10%;
+                text-align: left;
+                
+                
+                
+            }
+            .footer a:visited,a:link{
+                overflow: hidden;
+            
+                 
+                 display: inline-block;
+                 background-color: white;
+                 color: black;
+                 text-decoration: none;
+                 
+
+            }
+            .footer hr{
+                margin-top: 0.10em;
+                margin-bottom: 0.10em;
+                height: 0;
+            }
+            
+        </style>
+    </head>
+    <body>
+        {% csrf_token %}
+        <header>
+        <div id="hii">
+            <center>
+            <div style="background-color:aqua;color:black;">
+              
+
+        <span> <input  type="search" placeholder="search" name="sea"> 
+        <button type="submit"><i class="fa fa-search"></i></button>
+        
+        <div id="na">
+
+        <button align="right" onclick="window.location.href='post';">post</button>
+    </div>
+        </span>
+        </center>
+        
+        {% for i in data %}
+        <h2>{{i.quest}}<br></h2>
+        <form action="{% url 'answ' %}" method="POST">
+            {% csrf_token %}
+
+        
+        <input type="hidden" name="que" value="{{i.id}}">
+        
+        <button type="submit">see answer</button>
+        
+    </form>
+    <form action="answer" method="POST">
+        {% csrf_token %}
+        
+        
+        <input type="hidden" name="question_id" value="{{i.id}}">
+        
+        <button align="right" onclick="window.location.href='answer';">give answer</button>
+    </form>
+    
+    {% endfor %}
+    <div class="footer">
+        <hr>
+        <a class="ab" href="page">home</a>
+        <a class="ac" href="profile">profile</a>
+        <a class="bc" href="upload">upload image</a>
+    </div>
+        </div>
+        </div>
+        <hr>
+        </header>
+    </body>
+</html>

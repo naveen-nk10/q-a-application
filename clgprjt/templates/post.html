@@ -1,0 +1,9 @@
+<html>
+    <body>
+        <form action="post_question" method="POST">
+            {% csrf_token %}
+        <textarea rows="3" cols="70" name="text" placeholder="enter your question here...."></textarea><br>
+        <button type="submit">post</button>
+        </form>
+    </body>
+</html>

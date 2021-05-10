@@ -1,0 +1,12 @@
+<html>
+    <body>
+        {% for j in quest %}
+             <h1>{{j.quest}}</h1>
+        {% endfor %}
+        <hr>
+        {% for i in result %}
+             {{i.an}}
+             {{i.user_id.username}}
+        {% endfor %}
+    </body>
+</html>

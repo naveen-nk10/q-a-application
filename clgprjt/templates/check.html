@@ -1,0 +1,82 @@
+<html>
+    <body>
+        
+        <h1>your countdown is started</h1>
+        <h1 id="count">30</h1>
+
+        enter otp
+        <form action="register" method="POST">
+         {% csrf_token %}   
+        
+        <input  type="hidden" name="count" id="demo" >
+        
+        <input type="hidden" value={{result}} name="result">
+        <input type="hidden" value={{username}} name="username">
+        <input type="hidden" value={{first_name}} name="first_name">
+        <input type="hidden" value={{last_name}} name="last_name">
+        <input type="hidden" value={{email}} name="email">
+        <input type="hidden" value={{password}} name="password1">
+        <input type="hidden" value={{password2}} name="password2">
+       
+        
+        <script>
+            setTimeout(function(){
+                var d=document.getElementById('submit').disabled=false;
+            
+            },30000)
+            var count=30;
+            setInterval(function my(){
+                count--;
+                if(count>=0){
+            id=document.getElementById("count");
+            document.getElementById("demo").value=count
+            id.innerHTML=count;
+            
+        }
+            if(count==0){
+                id.innerHTML="<h2>your otp is expirered</h2>."
+                var a=document.createElement("a");
+                a.innerHTML="resend otp";
+            }
+            },1000)
+            
+                
+            
+            </script>
+            <div id="aaa">
+                <form>
+                    {% csrf_token %}
+                <input  type="hidden" name="count" id="demo" >
+        
+        <input type="hidden" value={{result}} name="result">
+        <input type="hidden" value={{username}} name="username">
+        <input type="hidden" value={{first_name}} name="first_name">
+        <input type="hidden" value={{last_name}} name="last_name">
+        <input type="hidden" value={{email}} name="email">
+        <input type="hidden" value={{password}} name="password1">
+                    <button disabled="disabled" id="submit" >resend otp</button>
+                </form>
+            
+        </form>
+            <form action="check" method="POST">
+                {% csrf_token %}
+                <input  type="hidden" name="count" id="demo" >
+        <input type="number" placeholder="enter otp..." name="otp">
+        <input type="hidden" value={{result}} name="result">
+        <input type="hidden" value={{username}} name="username">
+        <input type="hidden" value={{first_name}} name="first_name">
+        <input type="hidden" value={{last_name}} name="last_name">
+        <input type="hidden" value={{email}} name="email">
+        <input type="hidden" value={{password}} name="password1">
+            <button  onclick="window.location.href='check';">enter</button>
+        </form>
+        </div>
+    
+        <div>
+            {% for message in messages%}
+
+              <h3>{{ message }}</h3>
+            {% endfor %}
+        </div>
+    </body>
+</html>
